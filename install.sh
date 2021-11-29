@@ -33,16 +33,18 @@ sudo ufw reload
 ulimit -n 200000
 sudo wget https://github.com/idena-network/idena-web/archive/refs/heads/master.zip
 unzip master.zip
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-source ~/.bashrc
-nvm install v14.17.1 -y
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-node -v
-npm -v
+wget https://github.com/rioda-org/idena/raw/main/node-v16.13.0-linux-x64.tar.xz
+sudo mkdir -p /usr/local/lib/nodejs
+sudo tar -xJvf node-v16.13.0-linux-x64.tar.xz -C /usr/local/lib/nodejs
+rm node-v16.13.0-linux-x64.tar.xz
+echo "export PATH=/usr/local/lib/nodejs/node-v16.13.0-linux-x64/bin:$PATH" >> ~/.profile
+. ~/.profile
 sudo echo 'deb http://nginx.org/packages/ubuntu/ bionic nginx' | sudo tee -a /etc/apt/sources.list.d/nginx.list
 sudo echo 'deb-src http://nginx.org/packages/ubuntu/  bionic nginx' | sudo tee -a /etc/apt/sources.list.d/nginx.list
 sudo wget --quiet http://nginx.org/keys/nginx_signing.key
 sudo apt-key add nginx_signing.key
+sudo apt update
 sudo apt install nginx
-
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
