@@ -33,12 +33,6 @@ sudo ufw reload
 ulimit -n 200000
 sudo wget https://github.com/idena-network/idena-web/archive/refs/heads/master.zip
 unzip master.zip
-wget https://github.com/rioda-org/idena/raw/main/node-v16.13.0-linux-x64.tar.xz
-sudo mkdir -p /usr/local/lib/nodejs
-sudo tar -xJvf node-v16.13.0-linux-x64.tar.xz -C /usr/local/lib/nodejs
-rm node-v16.13.0-linux-x64.tar.xz
-echo "export PATH=/usr/local/lib/nodejs/node-v16.13.0-linux-x64/bin:$PATH" >> ~/.profile
-. ~/.profile
 sudo echo 'deb http://nginx.org/packages/ubuntu/ bionic nginx' | sudo tee -a /etc/apt/sources.list.d/nginx.list
 sudo echo 'deb-src http://nginx.org/packages/ubuntu/  bionic nginx' | sudo tee -a /etc/apt/sources.list.d/nginx.list
 sudo wget --quiet http://nginx.org/keys/nginx_signing.key
