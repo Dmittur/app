@@ -2,7 +2,6 @@
 sudo ufw disable
 sudo apt update
 sudo apt-get update && apt-get upgrade -y
-sudo apt full-upgrade -y
 #Files
 sudo echo "DefaultLimitNOFILE=65535" >> /etc/systemd/system.conf
 #swap file 4 Gb
@@ -13,7 +12,6 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo swapon --show
 sudo echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-cat /proc/sys/vm/swappiness
 sudo echo 'vm.swappiness=25' >> /etc/sysctl.conf
 #Time
 sudo apt install ntpsec
@@ -31,14 +29,3 @@ sudo ufw allow 443/tcp
 sudo ufw enable
 sudo ufw reload
 ulimit -n 200000
-sudo wget https://github.com/idena-network/idena-web/archive/refs/heads/master.zip
-unzip master.zip
-sudo echo 'deb http://nginx.org/packages/ubuntu/ bionic nginx' | sudo tee -a /etc/apt/sources.list.d/nginx.list
-sudo echo 'deb-src http://nginx.org/packages/ubuntu/  bionic nginx' | sudo tee -a /etc/apt/sources.list.d/nginx.list
-sudo wget --quiet http://nginx.org/keys/nginx_signing.key
-sudo apt-key add nginx_signing.key
-sudo apt update
-sudo apt install nginx
-sudo systemctl enable nginx
-sudo systemctl start nginx
-sudo systemctl status nginx
