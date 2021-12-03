@@ -29,11 +29,5 @@ sudo ufw allow 443/tcp
 sudo ufw enable
 sudo ufw reload
 ulimit -n 200000
-wget https://github.com/rioda-org/idena/raw/main/node-v16.13.0-linux-x64.tar.xz
-sudo mkdir -p /usr/local/lib/nodejs
-sudo tar -xJvf node-v16.13.0-linux-x64.tar.xz -C /usr/local/lib/nodejs
-rm node-v16.13.0-linux-x64.tar.xz
-echo "export PATH=/usr/local/lib/nodejs/node-v16.13.0-linux-x64/bin:$PATH" >> ~/.profile
-. ~/.profile
 wget https://github.com/idena-network/idena-web/archive/refs/heads/master.zip
-unzip master.zip
+unzip master.zip && cd idena-web-master
