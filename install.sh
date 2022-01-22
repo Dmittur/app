@@ -18,6 +18,7 @@ sudo service ntpsec restart
 sudo apt-get install zip unzip screen wget -y
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
+sudo ufw allow 22/tcp
 sudo ufw enable
 sudo ufw reload
 ulimit -n 200000
